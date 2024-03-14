@@ -1,6 +1,6 @@
-n, m, v = list(map(int, input().split()))
+n, m, v = map(int, input().split())
 
-graph = [[] for i in range(n+1)]
+graph = [[] for i in range (n+1)]
 
 for _ in range(m) :
     a, b = map(int, input().split())
@@ -10,27 +10,27 @@ for _ in range(m) :
 for i in graph :
     i.sort()
 
-visit_dfs = [False] * (n+1)
+visit_dfs = [False] * (n + 1)
 
 def dfs(start) :
     visit_dfs[start] = True
-    print(start, end= " ")
+    print(start, end=" ")
     for next in graph[start] :
         if not visit_dfs[next] :
             dfs(next)
 
-visit_bfs = [False] * (n+1)
-
 from collections import deque
 
+visit_bfs = [False] * (n + 1)
+
 def bfs(start) :
-    visit_bfs[start] = True
     q = deque()
     q.append(start)
-    
-    while q :
+    visit_bfs[start] = True
+
+    while q:
         one = q.popleft()
-        print(one, end=" ")
+        print(one, end= " ")
         for next in graph[one] :
             if not visit_bfs[next] :
                 q.append(next)
