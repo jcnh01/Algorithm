@@ -2,16 +2,16 @@ from collections import deque
 
 def solution(prices):
     answer = []
+    prices = deque(prices)
     
-    q = deque(prices)
-
-    while q :
-        num = q.popleft()
-        time = 0
-        for a in q :
-            time += 1
-            if num > a :
+    while prices :
+        num = prices.popleft()
+        cnt = 0
+        for p in prices :
+            cnt += 1
+            if num > p :
                 break
-        answer.append(time)
+            
+        answer.append(cnt)
     
     return answer
